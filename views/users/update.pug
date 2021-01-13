@@ -1,0 +1,36 @@
+extends ../layouts/common.pug
+
+block  content
+    h1 Update Information User
+
+    if errors
+        each error in errors
+            .alert.alert-danger= error
+
+    form(action="/users/update", method="POST", , enctype="multipart/form-data")
+       
+        .form-group
+            label(for="avatar") Avatar
+            input#avatar.form-control-file(name="avatar", type="file")
+       
+        .form-group
+            label(for="email") Email
+            input#email.form-control(name="email", type="text", value=values ? values.email : "")
+    
+        .form-group
+            label(for="fullName") FullName
+            input#fullName.form-control(name="fullname", type="text", value=values ? values.fullName : "")
+
+        .form-group
+            label(for="phone") Phone
+            input#phone.form-control(name="phone", type="text", value=values ? values.phone : "")
+        
+        .form-group
+            label(for="address") Address
+            input#address.form-control(name="address", type="text", value=values ? values.address : "")
+
+        .form-group
+            label(for="sex") Sex
+            input#sex.form-control(name="sex", type="text", value=values ? values.sex : "")    
+        
+        button.btn.btn-primary Update
